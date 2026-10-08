@@ -39,10 +39,10 @@ if (!is_dir($system_path)) {
 }
 
 define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
-define('BASEPATH', rtrim(str_replace('\', '/', realpath($system_path)), '/') . '/');
+define('BASEPATH', rtrim(str_replace('\\', '/', realpath($system_path)), '/') . '/');
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 define('SYSDIR', basename(BASEPATH));
-define('APPPATH', rtrim(str_replace('\', '/', realpath($application_folder)), '/') . '/');
-define('VIEWPATH', rtrim(str_replace('\', '/', realpath($view_folder)), '/') . '/');
+define('APPPATH', rtrim(str_replace('\\', '/', realpath($application_folder)), '/') . '/');
+define('VIEWPATH', rtrim(str_replace('\\', '/', realpath($view_folder)), '/') . '/');
 
 require_once BASEPATH . 'core/CodeIgniter.php';

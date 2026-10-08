@@ -1,0 +1,1 @@
+<?php defined('BASEPATH') OR exit; ?><div style="border:1px solid #c00;padding:8px;margin:8px"><b><?= get_class($exception) ?>:</b> <?= htmlspecialchars($message) ?> — <?= htmlspecialchars($exception->getFile()) ?>:<?= $exception->getLine() ?></div>

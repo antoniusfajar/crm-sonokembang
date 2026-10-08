@@ -1,0 +1,1 @@
+<?php defined('BASEPATH') OR exit; ?><div style="border:1px solid #c00;padding:8px;margin:8px"><b>PHP error:</b> <?= htmlspecialchars($message) ?> — <?= htmlspecialchars($filepath) ?>:<?= $line ?></div>

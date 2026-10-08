@@ -1,0 +1,9 @@
+{
+  "name": "sonokembang/crm-website",
+  "description": "CRM Sonokembang - website (CodeIgniter 3 + MySQL)",
+  "require": {
+    "php": ">=7.4",
+    "codeigniter/framework": "3.1.13"
+  },
+  "config": { "vendor-dir": "vendor" }
+}

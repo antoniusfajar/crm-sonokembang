@@ -1,0 +1,5 @@
+# HTTPS otomatis untuk server VPS. Salin ke /etc/caddy/Caddyfile lalu: sudo systemctl reload caddy
+# DNS: A record "api" -> 187.77.116.15 (IP VPS)
+api.sonokembangmalang.tech {
+    reverse_proxy 127.0.0.1:4000
+}

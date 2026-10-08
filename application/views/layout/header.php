@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($title) ?> · CRM Sonokembang</title>
+<link rel="icon" href="<?= base_url('assets/img/bops.png') ?>" type="image/png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <style>
@@ -24,7 +25,9 @@
 <?php $seg = $this->uri->segment(1) ?: 'dashboard'; ?>
 <div class="d-md-flex">
   <nav class="sidebar p-3">
-    <div class="text-white fw-bold mb-3"><i class="bi bi-flower1"></i> Sonokembang CRM</div>
+    <a href="<?= site_url('dashboard') ?>" class="bg-white rounded mb-3 p-2 text-center">
+      <img src="<?= base_url('assets/img/bops.png') ?>" alt="Sonokembang Catering" style="max-width:100%;height:56px;object-fit:contain">
+    </a>
     <?php
     $menu = array('dashboard' => array('speedometer2', 'Dashboard'), 'inbox' => array('chat-dots', 'Inbox'),
         'leads' => array('kanban', 'Lead'), 'customers' => array('people', 'Pelanggan'), 'tasks' => array('check2-square', 'Tugas'));

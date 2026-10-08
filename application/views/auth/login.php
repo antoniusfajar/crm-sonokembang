@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Masuk · CRM Sonokembang</title>
+<link rel="icon" href="<?= base_url('assets/img/bops.png') ?>" type="image/png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light d-flex align-items-center" style="min-height:100vh">
 <div class="container" style="max-width:380px">
   <div class="card shadow-sm">
     <div class="card-body p-4">
-      <h1 class="h5 mb-3">CRM Sonokembang</h1>
+      <img src="<?= base_url('assets/img/bops.png') ?>" alt="Sonokembang Catering" class="d-block mx-auto mb-3" style="max-width:220px;width:100%">
+      <h1 class="h6 text-center text-muted mb-3">Masuk ke CRM</h1>
       <?php if ($error): ?><div class="alert alert-danger py-2"><?= e($error) ?></div><?php endif; ?>
       <?= form_open('login') ?>
         <div class="mb-3"><label class="form-label">Email</label>

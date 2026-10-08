@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Update server Node dari branch server-vps. Aman dijadwalkan di crontab:
 # hanya install & restart bila ada commit baru.
-# Pertama kali:  git clone -b server-vps https://github.com/<user>/<repo>.git /opt/crm-vps
+# Pertama kali:  git clone -b server-vps git@github.com:antoniusfajar/crm-sonokembang.git /opt/SK-crm
 set -e
-cd /opt/crm-vps
+cd "$(dirname "$(readlink -f "$0")")"
 git fetch -q origin server-vps
 if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/server-vps)" ]; then
   exit 0

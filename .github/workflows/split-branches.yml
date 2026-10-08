@@ -65,5 +65,5 @@ jobs:
           echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
-          # Perintah dikunci di authorized_keys VPS: bash /opt/SK-crm/deploy.sh
+          # Perintah dikunci di authorized_keys VPS: bash /opt/SK-Crm/deploy.sh
           ssh "$USER@$HOST"

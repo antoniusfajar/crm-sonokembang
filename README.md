@@ -84,8 +84,8 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt install -y nodejs git caddy
 sudo npm i -g pm2
 
-git clone -b server-vps git@github.com:antoniusfajar/crm-sonokembang.git /opt/SK-crm
-cd /opt/SK-crm
+git clone -b server-vps git@github.com:antoniusfajar/crm-sonokembang.git /opt/SK-Crm
+cd /opt/SK-Crm
 cp .env.example .env && nano .env      # DB_HOST = hostname Remote MySQL hosting, VPS_API_KEY, WA_*
 npm ci --omit=dev
 pm2 start ecosystem.config.cjs
@@ -153,7 +153,7 @@ Tiap 30 detik skrip memeriksa file yang berubah → `commit` → `push` ke `main
 ### Update server setelah push
 
 - **Hosting**: otomatis lewat Auto Deployment hPanel (webhook GitHub di langkah 1.4).
-- **VPS**: `bash /opt/SK-crm/deploy.sh`, atau otomatis tiap 5 menit dengan crontab VPS: `*/5 * * * * bash /opt/SK-crm/deploy.sh >> /var/log/crm-deploy.log 2>&1`
+- **VPS**: `bash /opt/SK-Crm/deploy.sh`, atau otomatis tiap 5 menit dengan crontab VPS: `*/5 * * * * bash /opt/SK-Crm/deploy.sh >> /var/log/crm-deploy.log 2>&1`
 
 ---
 

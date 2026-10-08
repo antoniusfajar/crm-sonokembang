@@ -1,11 +1,12 @@
-# Setiap push ke main, isi folder website/ dan vps-server/ dipublikasikan
-# ke branch terpisah:  website  dan  server-vps  (riwayat commit ikut terbawa).
-name: Pisah ke branch website & server-vps
+# Setiap push ke main:
+#  1. isi website/ -> branch "website", isi vps-server/ -> branch "server-vps"
+#  2. hosting langsung menarik branch "website" lewat SSH (tanpa hPanel/cron)
+name: Pisah branch & deploy
 
 on:
   push:
     branches: [main]
-    paths: ['website/**', 'vps-server/**']
+    paths: ['website/**', 'vps-server/**', '.github/workflows/**']
   workflow_dispatch:
 
 permissions:
@@ -30,3 +31,22 @@ jobs:
           git push --force origin split-website:website
           git subtree split --prefix=vps-server -b split-vps
           git push --force origin split-vps:server-vps
+
+  deploy-website:
+    needs: split
+    runs-on: ubuntu-latest
+    # Aktif setelah secret HOSTING_SSH_HOST diisi
+    env:
+      HOST: ${{ secrets.HOSTING_SSH_HOST }}
+      PORT: ${{ secrets.HOSTING_SSH_PORT }}
+      USER: ${{ secrets.HOSTING_SSH_USER }}
+    steps:
+      - name: Pull di hosting
+        if: env.HOST != ''
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HOSTING_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${PORT:-65002}" "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # Perintah yang dijalankan dikunci di authorized_keys hosting (command="...")
+          ssh -p "${PORT:-65002}" "$USER@$HOST"

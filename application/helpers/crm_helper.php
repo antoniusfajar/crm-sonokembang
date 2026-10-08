@@ -43,3 +43,15 @@ function temp_badge($t)
     $map = array('Hot' => 'danger', 'Warm' => 'warning', 'Cold' => 'secondary');
     return '<span class="badge bg-' . ($map[$t] ?? 'secondary') . '">' . e($t) . '</span>';
 }
+
+/**
+ * URL file di folder assets/ + ?v=<waktu file diubah>.
+ * Setiap kali file berubah, URL ikut berubah sehingga browser tidak memakai cache lama.
+ */
+function asset($path)
+{
+    $path = ltrim($path, '/');
+    $file = FCPATH . 'assets/' . $path;
+    $v = is_file($file) ? filemtime($file) : time();
+    return base_url('assets/' . $path) . '?v=' . $v;
+}

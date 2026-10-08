@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Bendera segitiga hijau seperti logo Sonokembang -->
+  <g fill="#1a9a3c">
+    <path d="M6 44 L16 44 L11 56 Z"/>
+    <path d="M18 46 L28 46 L23 60 Z"/>
+    <path d="M30 46 L40 46 L35 60 Z" transform="translate(-1 0)"/>
+    <path d="M41 46 L51 46 L46 60 Z"/>
+    <path d="M52 44 L60 43 L56 55 Z"/>
+  </g>
+  <ellipse cx="32" cy="27" rx="30" ry="23" fill="#e10e14"/>
+  <text x="32" y="40" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" fill="#fff">S</text>
+</svg>

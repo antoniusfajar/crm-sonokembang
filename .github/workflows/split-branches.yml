@@ -1,6 +1,6 @@
 # Setiap push ke main:
 #  1. isi website/ -> branch "website", isi vps-server/ -> branch "server-vps"
-#  2. hosting langsung menarik branch "website" lewat SSH (tanpa hPanel/cron)
+#  2. hosting menarik branch "website" & VPS menjalankan deploy.sh, keduanya lewat SSH
 name: Pisah branch & deploy
 
 on:
@@ -50,3 +50,20 @@ jobs:
           ssh-keyscan -p "${PORT:-65002}" "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
           # Perintah yang dijalankan dikunci di authorized_keys hosting (command="...")
           ssh -p "${PORT:-65002}" "$USER@$HOST"
+
+  deploy-vps:
+    needs: split
+    runs-on: ubuntu-latest
+    env:
+      HOST: ${{ secrets.VPS_SSH_HOST }}
+      USER: ${{ secrets.VPS_SSH_USER }}
+    steps:
+      - name: Deploy di VPS
+        if: env.HOST != ''
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # Perintah dikunci di authorized_keys VPS: bash /opt/SK-crm/deploy.sh
+          ssh "$USER@$HOST"

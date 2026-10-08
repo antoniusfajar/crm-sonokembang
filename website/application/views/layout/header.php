@@ -4,29 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($title) ?> · CRM Sonokembang</title>
-<link rel="icon" href="<?= base_url('assets/img/bops.png') ?>" type="image/png">
+<link rel="icon" href="<?= asset('img/favicon.svg') ?>" type="image/svg+xml">
+<link rel="icon" href="<?= asset('img/favicon.png') ?>" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="<?= asset('img/favicon.png') ?>">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-<style>
-  :root { --brand: #db6262; }
-  body { background: #f6f7f9; }
-  .sidebar { width: 220px; min-height: 100vh; background: #1f2937; }
-  .sidebar a { color: #cbd5e1; text-decoration: none; display: block; padding: .55rem 1rem; border-radius: .4rem; }
-  .sidebar a.active, .sidebar a:hover { background: var(--brand); color: #fff; }
-  .chat { height: 60vh; overflow-y: auto; background: #efeae2; }
-  .bubble { max-width: 70%; padding: .5rem .75rem; border-radius: .6rem; margin: .25rem 0; white-space: pre-wrap; }
-  .bubble.in { background: #fff; }
-  .bubble.out { background: #d9fdd3; margin-left: auto; }
-  .bubble.system { background: #fff3cd; margin: .25rem auto; font-size: .85rem; }
-  @media (max-width: 768px) { .sidebar { width: 100%; min-height: auto; } }
-</style>
+<link href="<?= asset('css/app.css') ?>" rel="stylesheet">
 </head>
 <body>
 <?php $seg = $this->uri->segment(1) ?: 'dashboard'; ?>
 <div class="d-md-flex">
   <nav class="sidebar p-3">
-    <a href="<?= site_url('dashboard') ?>" class="bg-white rounded mb-3 p-2 text-center">
-      <img src="<?= base_url('assets/img/bops.png') ?>" alt="Sonokembang Catering" style="max-width:100%;height:56px;object-fit:contain">
+    <a href="<?= site_url('dashboard') ?>" class="sidebar-logo mb-3 text-center">
+      <img src="<?= asset('img/bops.png') ?>" alt="Sonokembang Catering">
     </a>
     <?php
     $menu = array('dashboard' => array('speedometer2', 'Dashboard'), 'inbox' => array('chat-dots', 'Inbox'),

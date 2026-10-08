@@ -1,0 +1,8 @@
+node_modules/
+vendor/
+.env
+*.log
+sk-crm-main/
+sk-crm-main.zip
+legacy/**/node_modules/
+legacy/**/dist/

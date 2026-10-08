@@ -1,0 +1,6 @@
+vendor/
+.env
+application/logs/*
+!application/logs/index.html
+application/cache/*
+!application/cache/index.html

@@ -1,0 +1,20 @@
+{
+  "name": "crm-vps-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CRM Sonokembang - server VPS: cron/schedule, webhook WhatsApp, perintah ke website",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "job": "node src/run-job.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3",
+    "node-cron": "^3.0.3"
+  }
+}

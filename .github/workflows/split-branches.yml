@@ -1,0 +1,32 @@
+# Setiap push ke main, isi folder website/ dan vps-server/ dipublikasikan
+# ke branch terpisah:  website  dan  server-vps  (riwayat commit ikut terbawa).
+name: Pisah ke branch website & server-vps
+
+on:
+  push:
+    branches: [main]
+    paths: ['website/**', 'vps-server/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: split-branches
+  cancel-in-progress: false
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Split & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git subtree split --prefix=website -b split-website
+          git push --force origin split-website:website
+          git subtree split --prefix=vps-server -b split-vps
+          git push --force origin split-vps:server-vps

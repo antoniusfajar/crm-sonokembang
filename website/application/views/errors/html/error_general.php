@@ -1,0 +1,1 @@
+<?php defined('BASEPATH') OR exit; ?><!doctype html><html lang="id"><head><meta charset="utf-8"><title><?= htmlspecialchars($heading) ?></title><style>body{font-family:sans-serif;max-width:640px;margin:10vh auto;padding:0 16px}</style></head><body><h1><?= htmlspecialchars($heading) ?></h1><?= $message ?><p><a href="/">Kembali</a></p></body></html>
